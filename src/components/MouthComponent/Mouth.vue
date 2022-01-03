@@ -2,9 +2,6 @@
     <div>
         <div class="main__mouth">
             <div class="mouth__container">
-                <!-- <DivMouthComponent></DivMouthComponent> -->
-                <!-- <DivMouthComponent></DivMouthComponent> -->
-                <!-- <DivMouthComponent></DivMouthComponent> -->
                 <DivRefactor 
                     v-for="styles in divsStyles"
                     :key="styles.cc"
@@ -21,13 +18,11 @@
 
 <script>
 import { getRandomColor } from "@/services/services.js";
-// import DivMouthComponent from "@/components/DivMouthComponent/DivMouth.vue"
 import DivRefactor from "@/refactor/DivRefactor.component.vue";
 
 export default {
     name: 'MouthComponent',
     components: {
-        // DivMouthComponent,
         DivRefactor
     },
     data() {

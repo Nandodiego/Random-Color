@@ -1,21 +1,61 @@
 <template>
     <div>
         <div class="main__feets">
-            <DivFeetsComponent></DivFeetsComponent>
-            <DivFeetsComponent></DivFeetsComponent>
-            <DivFeetsComponent></DivFeetsComponent>
+            <DivRefactor
+                class="feets__container"
+                v-for="styles in divsStyles"
+                :key="styles.cc"
+                :width="styles.width"
+                :height="styles.height"
+                :bg="styles.backgroundColor"
+                :cc="styles.cc"
+                @changeBg="changeColor($event)"
+            />
         </div>
     </div>
 </template>
 
 <script>
 
-import DivFeetsComponent from "@/components/DivFeetsComponent/DivFeets.vue"
+import { getRandomColor } from "@/services/services.js";
+import DivRefactor from "@/refactor/DivRefactor.component.vue";
 
 export default {
     name: 'FeetsComponent',
     components: {
-        DivFeetsComponent
+        DivRefactor
+    },
+    data(){
+        return {
+            divsStyles: [
+                {
+                    cc: "ds8a",
+                    backgroundColor: '#DFC89A',
+                    width: '334',
+                    height: '261',
+                },
+                {
+                    cc: "dsa2",
+                    backgroundColor: '#DFC89A',
+                    width: '315',
+                    height: '268',
+                },
+                {
+                    cc: "dsa3",
+                    backgroundColor: '#DFC89A',
+                    width: '315',
+                    height: '268',
+                },
+            ]
+        }
+    },
+    methods: {
+        changeColor(event){
+            const findIndex = this.divsStyles.findIndex(item => item.cc === event);
+            if(findIndex > -1) {
+                this.divsStyles[findIndex].backgroundColor = getRandomColor();
+            }
+        }
     }
 }
 </script>
@@ -28,5 +68,10 @@ export default {
         background: var(--bg-feets-container);
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .feets__container{
+        cursor: pointer;
     }
 </style>

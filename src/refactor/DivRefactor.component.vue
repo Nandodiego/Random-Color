@@ -4,7 +4,9 @@
             :style="{
                 width: width + 'px',
                 height: height + 'px',
-                backgroundColor: bg
+                backgroundColor: bg,
+                border: borderDiv,
+                borderRadius: borderRadiusDiv + '%'
             }" 
             @click="changeColor"
         ></div>
@@ -27,6 +29,12 @@ export default {
             default: '#ffffff'
         },
         cc: {
+            type: String
+        },
+        borderDiv: {
+            type: String
+        },
+        borderRadiusDiv: {
             type: String
         }
     },
