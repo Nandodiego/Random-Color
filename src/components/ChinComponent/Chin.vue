@@ -1,27 +1,39 @@
 <template>
     <div>
         <div class="main__chin">
-            <div class="chin__container" :style="theStyle" @click="generator"></div>
+            <DivRefactor
+                class="chin__container"
+                :width="divStyles.width"
+                :height="divStyles.height"
+                :bg="divStyles.backgroundColor"
+                @changeBg="changeColor"
+            />   
         </div>
     </div>
 </template>
 
 <script>
 
-import {getRandomColor} from "@/services/services.js"
+import { getRandomColor } from "@/services/services.js";
+import DivRefactor from "@/refactor/DivRefactor.component.vue";
 
 export default {
     name: 'ChinComponent',
+    components: {
+        DivRefactor
+    },
     data(){
         return {
-            theStyle: {
-                backgroundColor: '#1F1E1E'
+            divStyles: {
+                backgroundColor: '#1F1E1E',
+                width: '166',
+                height: '107',
             }
         }
     },
     methods: {
-        generator(){
-            this.theStyle.backgroundColor = getRandomColor();
+        changeColor(){
+            this.divStyles.backgroundColor = getRandomColor();
         }
     }
 }
@@ -41,8 +53,6 @@ export default {
     }
 
     .chin__container{
-        width: 166px;
-        height: 107px;
         cursor: pointer;
     }
 </style>
